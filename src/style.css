@@ -1,0 +1,116 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'karla', sans-serif;
+    font-size: 62.5%;
+}
+
+.home, .question__container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #F5F7FB;
+    color: #293264;
+    overflow: hidden;
+}
+
+.home {
+    height: 100vh;
+}
+
+.question__container {
+    padding: 4rem 7.5rem;
+    padding-top: 2rem;
+}
+.question {
+    width: 70%;
+    font-size: 1.6rem;
+    font-weight: 700;
+    padding-bottom: 2rem;
+    padding-top: .5rem;
+    border-bottom: 2px solid #DBDEF0;
+    user-select: none;
+}
+
+.question__answer {
+    min-width: 6.5rem;
+    height: 2rem;
+    padding: 0 10px;
+    margin-right: 1.5rem;
+    border-radius: 20px;
+    border: 2px solid #4D5B9E;
+    font-size: 1rem;
+    text-align: center;
+    line-height: 2rem;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.question__text {
+    margin-bottom: 20px;
+}
+
+.title {
+    font-size: 3.1rem;
+    font-weight: 700;
+}
+
+.paragraph {
+    font-size: 1.6rem;
+    font-weight: 400;
+    margin-top: 7px;
+}
+
+.button {
+    width: 19.5rem;
+    height: 5.2rem;
+    background-color: #4D5B9E;
+    border: none;
+    border-radius: 15px;
+    color: white;
+    margin-top: 3rem;
+}
+
+.background__element {
+    width: 30rem;
+    height: 24rem;
+    position: absolute;
+}
+
+.background__element--yellow {
+    border-radius: 42% 58% 72% 28% / 30% 28% 72% 70%;
+    background-color: #FFFAD1;
+    top: -100px;
+    right: -150px;
+    transform: rotate(50deg);
+}
+
+.background__element--blue {
+    border-radius: 42% 58% 72% 28% / 30% 28% 72% 70%;
+    background-color: #DEEBF8;
+    bottom: -150px;
+    left: -180px;
+    transform: rotate(-30deg);
+}
+
+.background__element--right {
+    right: -15rem;
+    transform: rotate(70deg);
+}
+
+.background__element--left {
+    left: -15rem;
+    transform: rotate(70deg);
+}
+
+.question__answer--selected {
+    border: none;
+    background-color: #D6DBF5;
+}
+
+
