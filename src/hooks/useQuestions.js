@@ -6,14 +6,21 @@ import {nanoid} from "nanoid"
 export function useQuestions() {
 
     const [state, setState] = useState([]);
+    const [checkAnswers, setCheckAnswers] = useState({
+        correct: 0,
+        checked: false
+    });
 
+    useEffect(() => {
+        fetchQuestion()
+    }, []);
 
     // function to get from the response only the questions and the answers.
     const normalizedQuestion = (data) => {
         
         const questionArray = []
         data.forEach( question => {
-            const answers = []
+            let answers = []
 
             answers.push({
                 id: nanoid(),
@@ -22,12 +29,22 @@ export function useQuestions() {
                 selected: false
             })
 
-            question.incorrect_answers.forEach(answer => answers.push({ id: nanoid(), text: atob(answer), correct: false, selected: false }));
-
+            question.incorrect_answers.forEach(answer => 
+                answers.push({ 
+                    id: nanoid(), 
+                    text: atob(answer), 
+                    correct: false, 
+                    selected: false 
+                }));
+            
+            // shuffle answers
+            answers = answers.sort(() => Math.random() - 0.5);
+            
             questionArray.push({ answers, question: atob(question.question) })
         })
         setState(questionArray)
     }
+
 
     const fetchQuestion = () => {
         axios.get('https://opentdb.com/api.php?amount=5&difficulty=easy&type=multiple&encode=base64')
@@ -38,6 +55,7 @@ export function useQuestions() {
         .catch(console.log)
     }
 
+    
     const selectQuestion = (id) => {
         setState(prevData => prevData.map(question => {
             let findQuestion = false;
@@ -56,13 +74,23 @@ export function useQuestions() {
         }))         
     }
 
-    useEffect(() => {
-        fetchQuestion()
-    }, []);
+    const checkQuestions = () => {
+
+        const correctAnswers = state.filter(question => question.answers.some(answer => answer.selected && answer.correct));
+        setCheckAnswers({ correct: correctAnswers.length, checked: true });
+    }
+
+    const resetQuestions = () => {
+
+        fetchQuestion();
+        setCheckAnswers({ correct: 0, checked: false });
+    }
 
     return {
         state,
-        fetchQuestion,
-        selectQuestion
+        checkAnswers,
+        selectQuestion,
+        checkQuestions,
+        resetQuestions
     }
 }

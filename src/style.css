@@ -24,6 +24,7 @@ body {
 }
 
 .question__container {
+    min-height: 100vh;
     padding: 4rem 7.5rem;
     padding-top: 2rem;
 }
@@ -51,6 +52,28 @@ body {
     cursor: pointer;
 }
 
+.question__answer--selected, .question__answer--correct, .question__answer--incorrect {
+    border: none;
+}
+
+.question__answer--selected {
+    background-color: #D6DBF5;
+}
+
+.question__answer--correct {
+    background-color: rgba(2, 255, 2, 0.322);
+}
+
+.question__answer--incorrect {
+    background-color: rgba(252, 56, 56, 0.493);
+}
+
+.question__answer--checked {
+    border-color: rgb(163, 163, 163);
+    color: rgb(163, 163, 163);
+}
+
+
 .question__text {
     margin-bottom: 20px;
 }
@@ -66,14 +89,35 @@ body {
     margin-top: 7px;
 }
 
+.question__reset {
+    display: flex;
+    width: 40%;
+    align-items: center;
+    justify-content: space-around;
+    margin-top: 2rem;
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+
 .button {
-    width: 19.5rem;
-    height: 5.2rem;
+    width: 12rem;
+    height: 3.5rem;
     background-color: #4D5B9E;
     border: none;
     border-radius: 15px;
     color: white;
     margin-top: 3rem;
+    cursor: pointer;
+}
+
+.button--big {
+    width: 19.5rem;
+    height: 5.2rem;
+    font-size: 1.6rem;
+}
+
+.button--m0 {
+    margin-top: 0;
 }
 
 .background__element {
@@ -108,9 +152,10 @@ body {
     transform: rotate(70deg);
 }
 
-.question__answer--selected {
-    border: none;
-    background-color: #D6DBF5;
+.button:hover, .button:focus {
+    background-color: #3446a0;
 }
 
-
+.button:active {
+    transform: scale(0.95);
+}

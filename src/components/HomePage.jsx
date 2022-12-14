@@ -11,7 +11,7 @@ export function HomePage({ setQuiz }) {
             </div>
             <h1 className='title'>Quizzical</h1>
             <p className='paragraph'>this page is design to prove your knowledge</p>
-            <button className="button" onClick={() => setQuiz(prev => !prev)}>Start quiz</button>
+            <button className="button button--big" onClick={() => setQuiz(prev => !prev)}>Start quiz</button>
         </div>
     )
 }
